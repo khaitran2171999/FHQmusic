@@ -1,0 +1,52 @@
+import React from 'react';
+import { View, Text, Image, ScrollView, Keyboard } from 'react-native';
+import styles from './ComponentStyles/Item';
+import PropTypes from 'prop-types';
+
+export default class Item extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  static propTypes = {
+    itemAreaStyle: PropTypes.object,
+    titleTextStyle: PropTypes.object,
+    category: PropTypes.string,
+    horizontal: PropTypes.bool,
+    scrollEnabled: PropTypes.bool,
+    data: PropTypes.array.isRequired,
+    itemStyle: PropTypes.object,
+    itemPictureStyle: PropTypes.object,
+    itemNameStyle: PropTypes.object
+  }
+
+  static defaultProps = {
+    horizontal: false,
+    scrollEnabled: true,
+    data: [],
+  };
+
+  render(){
+    return(  
+      <View style={[styles.itemArea, this.props.itemAreaStyle]}>
+        <Text style={[styles.titleText, this.props.titleTextStyle]}>{this.props.category}</Text>
+        <ScrollView 
+          horizontal={this.props.horizontal}
+          onScroll={Keyboard.dismiss}
+          scrollEventThrottle={0}
+          pagingEnabled={true}
+          scrollEnabled={this.props.scrollEnabled}
+        >
+          {this.props.data.map((item, index) => (
+          <View key={index.toString()} style={[styles.item, this.props.itemStyle]}>
+            <Image style={[styles.itemPicture, this.props.itemPictureStyle]} source={{
+              uri: item.picture,
+            }}/>
+            <Text style={[styles.itemName, this.props.itemNameStyle]}>{item.name}</Text>
+          </View>
+          ))}
+        </ScrollView>
+      </View>     
+    )
+  }
+}
