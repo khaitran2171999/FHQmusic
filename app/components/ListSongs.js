@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text, Image } from 'react-native';
+import { FlatList, View, Text, Image, TouchableOpacity } from 'react-native';
 import  * as Animatable from 'react-native-animatable';
 import styles from './ComponentStyles/ListSongs';
 import {
@@ -13,13 +13,15 @@ import { device } from '../config/ScreenDimensions'
 
 const songs = [
   {
+    id: 0,
     picture: 'https://i.ytimg.com/vi/HPL74s4VPdk/maxresdefault.jpg',
     name: 'Anh thanh niên',
     singer: 'HuyR',
     favorite: 0,
     latestListening: 1587917439178,
   },
-  {
+  { 
+    id: 1,
     picture: 'https://i.ytimg.com/vi/EWz4fITO5qg/maxresdefault.jpg',
     name: 'Vì yêu cứ đâm đầu',
     singer: 'MIN x ĐEN x JUSTATEE',
@@ -27,6 +29,7 @@ const songs = [
     latestListening: 1587267045840,
   },
   {
+    id: 2,
     picture: 'https://i.ytimg.com/vi/t0WFOnwp3MM/maxresdefault.jpg',
     name: 'Mặt trời của em ',
     singer: 'Phương Ly',
@@ -34,6 +37,7 @@ const songs = [
     latestListening: 1587917439178,
   },
   {
+    id: 3,
     picture: 'https://i.ytimg.com/vi/KhTCatAKVpk/maxresdefault.jpg',
     name: 'Đã lỡ yêu em nhiều',
     singer: 'JustaTee',
@@ -61,6 +65,10 @@ export default class ListSongs extends React.Component {
       return `${Math.floor(timeOffset/604800)} tuần trước`
     } else return new Date(time).toString();
   }
+
+  playSong = id => {
+    
+  }
   
   renderItem = ({item, index}) => {
     let itemDayOffset = this.getDayOffset(item.latestListening);
@@ -76,6 +84,14 @@ export default class ListSongs extends React.Component {
           <Text style={styles.dayOffset}>{itemDayOffset}</Text>
         </View> : 
         null }
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => {
+            this.playSong(item.id);
+            item.latestListening = new Date().getTime();
+            this.setState({dayOffset: ''});
+          }}  
+        >
         <View style={styles.container}>
           <Image style={styles.image} source = {{uri: item.picture}}/>
           <View style={styles.songInfoContainer}>
@@ -90,7 +106,7 @@ export default class ListSongs extends React.Component {
               <Icon name="favorite" size={device.width*0.08} color='#D50000'/>
             </View> : 
             null}
-          </View>
+          </View>  
           <View style={styles.optionIcon}>
             <Menu>
               <MenuTrigger>
@@ -110,6 +126,7 @@ export default class ListSongs extends React.Component {
             </Menu>
           </View>
         </View>
+        </TouchableOpacity>
       </Animatable.View>
     );
   }

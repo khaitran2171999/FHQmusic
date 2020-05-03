@@ -8,24 +8,6 @@ export default class Item extends React.Component {
     super(props);
   }
 
-  static propTypes = {
-    itemAreaStyle: PropTypes.object,
-    titleTextStyle: PropTypes.object,
-    category: PropTypes.string,
-    horizontal: PropTypes.bool,
-    scrollEnabled: PropTypes.bool,
-    data: PropTypes.array.isRequired,
-    itemStyle: PropTypes.object,
-    itemPictureStyle: PropTypes.object,
-    itemNameStyle: PropTypes.object
-  }
-
-  static defaultProps = {
-    horizontal: false,
-    scrollEnabled: true,
-    data: [],
-  };
-
   render(){
     return(  
       <View style={[styles.itemArea, this.props.itemAreaStyle]}>
@@ -49,4 +31,22 @@ export default class Item extends React.Component {
       </View>     
     )
   }
+}
+
+Item.propTypes = {
+  itemAreaStyle: PropTypes.object,
+  titleTextStyle: PropTypes.object,
+  category: PropTypes.string,
+  horizontal: PropTypes.bool,
+  scrollEnabled: PropTypes.bool,
+  data: PropTypes.array.isRequired,
+  itemStyle: PropTypes.object,
+  itemPictureStyle: PropTypes.object,
+  itemNameStyle: PropTypes.object
+}
+
+Item.defaultProps = {
+  horizontal: false,
+  scrollEnabled: true,
+  data: [],
 }

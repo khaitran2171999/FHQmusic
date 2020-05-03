@@ -3,7 +3,7 @@ import {device} from '../config/ScreenDimensions'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#0D47A1'   
+    backgroundColor: '#0D47A1',
   },
   titleTextContainer: {
     backgroundColor: '#42A5F5',

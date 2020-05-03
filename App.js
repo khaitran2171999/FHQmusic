@@ -5,8 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './app/screens/Home';
 import Personal from './app/screens/Personal';
 import SongList from './app/screens/SongList';
-import { MenuProvider } from 'react-native-popup-menu'
-import { Icon } from 'react-native-elements'
+import { MenuProvider } from 'react-native-popup-menu';
+import { Icon } from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,8 +26,6 @@ function TabNavigator() {
             color = focused? 'black' : 'gray';
             size = 30;
           }
-
-          // You can return any component that you like here!
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}

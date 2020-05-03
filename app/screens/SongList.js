@@ -16,7 +16,7 @@ export default class SongList extends React.Component {
           centerText={routeParams.title}
         />
         <View style={styles.songContainer}>
-          <ListSongs type={routeParams.type}/>
+          <ListSongs type={routeParams.type} navigate={navigate}/>
         </View>
       </SafeAreaView>
     );
