@@ -13,6 +13,10 @@ export default class Login extends Component {
 		// console.log(value)
 		this.setState({isChecked: !value})
 	} 
+
+	login = () => {
+		this.props.navigation.navigate("TabNavigator");
+	}
 	
 	render() {
 		const {navigate} = this.props.navigation;
@@ -59,7 +63,7 @@ export default class Login extends Component {
 								<Text style={styles.label}>Nhớ tài khoản ?</Text>
 							</View>
 
-							<TouchableOpacity style={styles.buttonContainer}>
+							<TouchableOpacity style={styles.buttonContainer} onPress={() => this.login()}>
 								<Text style={styles.buttonText}>Đăng Nhập</Text>
 							</TouchableOpacity>
 							

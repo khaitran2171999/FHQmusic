@@ -36,7 +36,7 @@ export default class Home extends React.Component {
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="default" translucent/>
         <View>
-          <SearchBar/>
+          <SearchBar navigation={this.props.navigation}/>
         </View>
         <ScrollView style={styles.scrollView}>
           <Item

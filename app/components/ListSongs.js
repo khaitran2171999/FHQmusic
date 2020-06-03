@@ -63,11 +63,11 @@ export default class ListSongs extends React.Component {
       return `${Math.floor(timeOffset/86400)} ngày trước`
     } else if (timeOffset < 2592000){
       return `${Math.floor(timeOffset/604800)} tuần trước`
-    } else return new Date(time).toString();
+    } else return new Date(time).toLocaleString();
   }
 
   playSong = id => {
-    
+    this.props.navigate("Player");
   }
   
   renderItem = ({item, index}) => {
