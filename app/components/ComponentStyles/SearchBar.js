@@ -11,8 +11,6 @@ export default StyleSheet.create({
   }, 
   searchBarContainer: {
     flexDirection: 'row',
-    borderColor: '#1976D2',
-    borderWidth: 1,
     borderRadius: device.height*0.06*0.35,
     height: device.height*0.06,
     width: device.width*0.8,
@@ -28,16 +26,14 @@ export default StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    borderColor: 'gray',
+    borderColor: '#1976D2',
     borderLeftWidth: 1,
     width: device.width*0.5,
     fontSize: device.height*0.025,
     paddingLeft: device.width*0.01,
-    height: device.height*0.05,
+    height: device.height*0.06,
   },
-  profileIcon: {
-    borderColor: 'green',
-    borderWidth: 1,
+  profileImage: {
     borderRadius: device.height*0.07*0.5,
     height: device.height*0.07,
     width: device.height*0.07,

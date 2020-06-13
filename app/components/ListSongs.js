@@ -9,46 +9,13 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { Icon } from 'react-native-elements';
-import { device } from '../config/ScreenDimensions'
-
-const songs = [
-  {
-    id: 0,
-    picture: 'https://i.ytimg.com/vi/HPL74s4VPdk/maxresdefault.jpg',
-    name: 'Anh thanh niên',
-    singer: 'HuyR',
-    favorite: 0,
-    latestListening: 1587917439178,
-  },
-  { 
-    id: 1,
-    picture: 'https://i.ytimg.com/vi/EWz4fITO5qg/maxresdefault.jpg',
-    name: 'Vì yêu cứ đâm đầu',
-    singer: 'MIN x ĐEN x JUSTATEE',
-    favorite: 1,
-    latestListening: 1587267045840,
-  },
-  {
-    id: 2,
-    picture: 'https://i.ytimg.com/vi/t0WFOnwp3MM/maxresdefault.jpg',
-    name: 'Mặt trời của em ',
-    singer: 'Phương Ly',
-    favorite: 0,
-    latestListening: 1587917439178,
-  },
-  {
-    id: 3,
-    picture: 'https://i.ytimg.com/vi/KhTCatAKVpk/maxresdefault.jpg',
-    name: 'Đã lỡ yêu em nhiều',
-    singer: 'JustaTee',
-    favorite: 1,
-    latestListening: 1587756992587,
-  },
-]
+import { device } from '../config/ScreenDimensions';
+import { songs } from '../data/data';
 
 export default class ListSongs extends React.Component {
   state = {
-    dayOffset: ''
+    dayOffset: '',
+    playlist: []
   }
 
   getDayOffset = time => {
@@ -66,8 +33,8 @@ export default class ListSongs extends React.Component {
     } else return new Date(time).toLocaleString();
   }
 
-  playSong = id => {
-    this.props.navigate("Player");
+  playSong = index => {
+    this.props.navigate("Player", {songPos: index, playlist: this.state.playlist});
   }
   
   renderItem = ({item, index}) => {
@@ -78,7 +45,7 @@ export default class ListSongs extends React.Component {
       this.state.dayOffset = itemDayOffset;
     }
     return(
-      <Animatable.View animation="zoomInLeft" delay={750} duration={2000}>
+      <View>
         {showDayOffset ?
         <View style={styles.dayOffsetContainer}>
           <Text style={styles.dayOffset}>{itemDayOffset}</Text>
@@ -87,7 +54,7 @@ export default class ListSongs extends React.Component {
         <TouchableOpacity
           activeOpacity={0.5}
           onPress={() => {
-            this.playSong(item.id);
+            this.playSong(index);
             item.latestListening = new Date().getTime();
             this.setState({dayOffset: ''});
           }}  
@@ -127,26 +94,25 @@ export default class ListSongs extends React.Component {
           </View>
         </View>
         </TouchableOpacity>
-      </Animatable.View>
+      </View>
     );
   }
 
   render(){
-    let data
     if (this.props.type === 'songs'){
-      data = songs.sort((a, b) => {
+      this.state.playlist = songs.sort((a, b) => {
         let nameA = a.name.toUpperCase();
         let nameB = b.name.toUpperCase();
         return nameA.localeCompare(nameB);
       });
     } else if (this.props.type === 'favorite') {
-      data = songs.filter(item => item.favorite==1)
+      this.state.playlist = songs.filter(item => item.favorite==1)
     } else if (this.props.type === 'history') {
-      data = songs.sort((a, b) => b.latestListening - a.latestListening);
+      this.state.playlist = songs.sort((a, b) => b.latestListening - a.latestListening);
     }
     return (
       <FlatList
-        data={data}
+        data={this.state.playlist}
         keyExtractor={(item, index) => index.toString()}
         renderItem={this.renderItem}
         style={styles.flatList}

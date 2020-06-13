@@ -5,7 +5,7 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: "center",
-    height: device.height*0.09,
+    height: device.height*0.08,
     width: device.width,
     backgroundColor: '#1976D2',
   },
@@ -19,6 +19,6 @@ export default StyleSheet.create({
   },
   centerText: {
     color: '#fff',
-    fontSize: device.width*0.05
+    fontSize: device.width*0.06
   }
 });

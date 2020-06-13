@@ -1,10 +1,11 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import {device} from '../config/ScreenDimensions'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ded5d6',
+        backgroundColor: '#806a7f',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       },
       header: {
         flexDirection: 'row'
@@ -21,7 +22,6 @@ export default StyleSheet.create({
         color: '#2e2d2b'
       },
       singer: {
-        marginTop: - device.height * 0.026,
         marginLeft: device.width * 0.103,
       },
       nameSinger: {

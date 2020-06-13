@@ -16,23 +16,20 @@ export default class Profile extends React.Component {
                     <View style={styles.headcontainer}>
                         <View style={styles.back}>
                             <TouchableOpacity onPress={()=> navigate('TabNavigator')}>
-                                <Icon name='arrow-left' type='font-awesome' size={30}></Icon>
+                                <Icon name='arrow-back' size={30} color="white"></Icon>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.mid}>
                             <View style={styles.titleText}>
-                                <Text>FHQ Music{'\n'}</Text>
+                                <Text style={{color: "white", fontSize: 30}}>FHQ Music{'\n'}</Text>
                             </View>
-                        <View>
-                            <Image
-                                style={styles.image}
-                                source={{
-                                    uri: 'https://i.ya-webdesign.com/images/profile-avatar-png-6.png',
-                                    width: 80, height: 80,
-                                }}
-                            ></Image>
-                        </View>
-
+                        <Image
+                            style={styles.image}
+                            source={{
+                                uri: 'https://i.ya-webdesign.com/images/profile-avatar-png-6.png',
+                                width: 80, height: 80,
+                            }}
+                        />
                         <View>
                             <Text>{'\n \n'}Nguyen Van A</Text>
                         </View>
@@ -48,25 +45,25 @@ export default class Profile extends React.Component {
                     <View style={styles.midcontainer}>
                         <View style={styles.items}>
                             <Icon name='star' type='font-awesome'></Icon>
-                            <Text>{'      '}Đánh giá ứng dụng</Text>
+                            <Text>{'   '}Đánh giá ứng dụng</Text>
                             <Text>{'\n\n'}</Text>
                         </View>
 
                         <View style={styles.items}>
                             <Icon name='info-circle' type='font-awesome'></Icon>
-                            <Text>{'      '}Thông tin ứng dụng</Text>
+                            <Text>{'   '}Thông tin ứng dụng</Text>
                             <Text>{'\n\n'}</Text>
                         </View>
 
                         <View style={styles.items}>
                             <Icon name='question-circle' type='font-awesome'></Icon>
-                            <Text>{'      '}Hướng dẫn sử dụng</Text>
+                            <Text>{'   '}Hướng dẫn sử dụng</Text>
                             <Text>{'\n\n'}</Text>
                         </View>
                         <TouchableOpacity onPress={() => this.logout()}>
                             <View style={styles.items}>
                                 <Icon name='sign-out' type='font-awesome'></Icon>
-                                <Text>{'      '}Đăng xuất</Text>
+                                <Text>{'   '}Đăng xuất</Text>
                                 <Text>{'\n\n'}</Text>
                             </View>
                         </TouchableOpacity>
@@ -82,7 +79,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'rgb(243,195,176)',
+        backgroundColor: '#201a27',
     },
     header: {
         flex: 3,

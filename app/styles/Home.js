@@ -3,10 +3,13 @@ import {device} from '../config/ScreenDimensions'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#0D47A1', 
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    backgroundColor: '#eeeeee' 
   },
   scrollView: {
-    height: device.height*0.81,
+    height: device.height*0.78,
     backgroundColor: '#E0E0E0'
   },
   suggestArea: {
